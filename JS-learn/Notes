@@ -1,0 +1,162 @@
+
+
+ JS - learning resources
+
+
+ 1. JS good-parts
+ 2. exploringjs
+ 3. MDN javascript
+
+ ------------------------------
+
+
+ javascript is
+
+ --> scripting lang for web-pgaes in browseer-envi
+ +
+ --> server-side lang on node.js
+ --> mobile appln
+
+ ------------------------------------------------
+
+ javascript features
+
+ -->  functional pgming
+ -->  OO lang
+
+ -->  dynamic typed lang
+ -->  closure support for async pgming...
+
+ --> single-threaded lang
+ --> supports better concurrency thru 'event-loop'
+
+
+ ------------------------------------------------
+
+  how to compile/run .js programs ?
+
+  we need 'js-engine'
+
+  browser-envi
+
+  1. chrome  ---> v8(c++)
+  2. firefox ---> rhino(java)
+  3. IE      ---> chakra
+  4. safari  ---> nitro
+
+
+non browser-envi
+
+  1. Node    --> v8
+  2. JVM     --> rhino / nashorn
+
+  3. MongoDB
+  4. Adobe
+  5. Apache CouchDB
+  ......
+
+  ---------------------------------
+
+  JS-lang/engine is an impln of 'ECMAScript' spec.
+
+  latest release : ES2015 or ES6
+
+  -----------------------------------
+
+
+  JS-lang learning - topics
+  
+
+  1.  JS data-structures/data-types
+  1.1 JS execution context
+  2.  functions - depth
+  3.  'this' keyword
+  4.  closures
+  5.  inheritence
+  6.  concurrency model  
+
+-----------------------------------
+
+
+  1. JS data-types
+
+
+     a. simple/primitives  ( values )
+
+         1. string
+         2. number
+         3. boolean
+         4. null
+         5. undefined
+
+         6. symbol ( es6 )
+        
+
+     b. complex/reference  ( objects )
+
+
+
+
+     to use NPM behind internet proxy
+
+     > node -v
+     > npm -v
+
+     > npm get prefix  ==> will give location of global_node_modules_path
+
+     > set PATH = %PATH%; global_node_modules_path
+
+     configure proxy
+
+     > npm config set proxy http://proxy.cognizant.com:6050
+     or
+     > npm config set proxy http://userid:password@proxy.cognizant.com:6050
+     > npm config set strict-ssl false
+
+     > npm i live-server -g
+
+     project_dir> live-server --port=8181 
+
+---------------------------------------------------------
+
+
+Execution context
+-----------------
+
+ stack-memory with args & locals to execute function instructions.
+
+ context - 2 phases
+
+
+ phase-1 : creation
+
+    all variables declared anywhere in that context will get hiosted(lifting-up)
+    to top with default value( undefined )
+
+ phase-2 : execution
+
+    instructions will execute in sequence.
+
+
+imp note :
+
+by default every JS-runtime has one 'global-execution-context' and 'global-object'
+and 'global-execution-context' owned by 'global-obj' by default.
+
+
+global-object:
+
+browser envi  ==> window
+node envi     ==> process
+
+ and all global variables will become property of 'global-obj'
+
+
+
+
+imp note:
+
+when invoking any function , 
+new-context will get created which is child of above context. 
+--------------------------------------------------------    
+
