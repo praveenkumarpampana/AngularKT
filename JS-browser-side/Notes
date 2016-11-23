@@ -1,0 +1,65 @@
+
+
+what .js lang can do on HTML-page ?
+
+js-lang can bring any dynamic-behav to html page thru web-APIs
+
+web-APIs are implememnted and abstracted as js objects/functions by browsers.
+
+e,g  web-APIs  ( DOM , XHR , Timer , etc... ) 
+
+using DOM API
+--------------
+  --> can create/update/delete/delect html elements.
+  --> can change element's attributes
+  --> can change element's style
+  --> can change element's inner-html
+  --> can handle events on elements
+  --> can create rich UI components.
+  --> can validate form-fields
+
+ising XHR API
+---------------
+  --> can communicate with server async and update result to page. ( AJAX )
+
+
+HTML5 APIs
+--------------
+
+ a. canvas
+ b. audio/video
+ c. localStorage
+ d. geo
+ c. webworker
+ d. SSE
+ g. wesockets
+ e. WebGL
+
+ etc..........
+
+
+----------------------------------------
+
+
+complexities of plain-js ( script written by you with web-apis )
+
+
+  1.  browser compatibility.
+  2.  too much code even for simple oprns.
+  3.  performance issues  ( e.g DOM related operns )
+  4.  memory manangement
+  5.  data-binding is manual
+
+
+solns 
+
+  using JS-libraries and Frameworks
+
+  1. jQuery
+
+  Limitations wlith jQuery
+
+  --> close to DOM. ( View )
+  --> data-binding manual.
+  --> view+logic+data atr mixed
+

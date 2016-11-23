@@ -160,3 +160,27 @@ when invoking any function ,
 new-context will get created which is child of above context. 
 --------------------------------------------------------    
 
+
+ JS is
+
+   --> single-theaded lang
+   --> Non-blocking IO
+
+
+   --------------------------
+
+   e.g chrome 
+
+   1. JS-engine  ( v8 )
+
+      a. call-stack  -> to execute instructions
+      b. heap        -> to keep objcts
+
+
+   2. Web APIs  ( e.g DOM, XHR , Timer , etc... )
+
+   3. message/callback queue
+
+   4. Event-loop 
+   
+      
