@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    NG-shop
+                </div>   
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>        
+        </nav>    
+
+        <div ng-app="shop" class="container">
+
+            <!--View-->
+            <div ng-controller="ShopController as sc" class="list-group">
+                <div ng-hide="product.notAvailable"
+                     ng-repeat="product in products | limitTo:10 | orderBy:'price':true" 
+                     class="list-group-item">
+                    
+                   <div class="row">
+                       <div class="col-xs-3 col-sm-3 col-md-3">
+                           <img ng-src="{{product.images[0].full}}" width="100"/>
+                       </div>    
+                       <div class="col-xs-9 col-sm-9 col-md-9">
+                            <span class="badge">{{$index+1}}</span>
+                            <h4>{{product.name | uppercase}} <small>{{product.make|date:'yyyy'}}</small> </h4>
+                            <h5>{{product.price | priceDiscount:product.discount| currency:'&#8377;':0 }}</h5>
+                            <p>{{product.description}}</p>
+                            <button ng-show="product.canBuy" class="btn btn-sm btn-primary">buy</button>
+                       </div>    
+                   </div>         
+
+                </div>    
+        </div>    
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script src="js/app.js"></script>
+        
+    </body>
+</html>

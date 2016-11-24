@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+        <style>
+            .ng-scope{
+                border: 1px solid red;
+                padding: 15px;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG scopes</div>
+
+        <div ng-app="demo" class="container">
+            <span class="badge"> {{color}} </span>
+            <button class="btn btn-sm btn-primary" ng-click="changeColor()">change-color</button>
+        
+            <div ng-controller="ColorController">
+                <span class="badge"> {{color}} </span>
+                <button class="btn btn-sm btn-primary" ng-click="changeColor()">change-color</button>
+                <div ng-controller="TextController">
+                     <span class="badge"> {{color}} </span>  
+                      <button class="btn btn-sm btn-primary" ng-click="changeText()">change-Text</button>                 
+                </div>
+
+            </div>
+            <div ng-controller="ColorController">
+                <span class="badge"> {{color}} </span>
+            </div>    
+        
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.run(function($rootScope){
+             $rootScope.color='red';
+             $rootScope.changeColor=function(){
+                 $rootScope.color='green'; 
+             }
+
+             $rootScope.$on('change-event',function(e,data){
+                 $rootScope.color=data.color;
+             });
+         });
+
+         mod.controller('ColorController',function($scope,$rootScope){
+             console.log('New ColorController instance created...');
+             $scope.color='blue';
+
+              $scope.changeColor=function(){
+                 $scope.color='yellow'; 
+                 //$rootScope.color='black';
+                 //$scope.$parent.color="black";
+             }   
+
+             $scope.$on('change-event',function(e,data){
+                 $scope.color=data.color;
+                 e.stopPropagation();
+             });
+
+         });
+
+         mod.controller('TextController',function($scope){
+             console.log('New TextController instance created...');
+             $scope.changeText=function(){
+                //$scope.$emit('change-event',{color:'pink'});
+                $scope.$broadcast('change-event',{color:'pink'});
+             }
+         });
+
+        </script>
+        
+    </body>
+</html>
