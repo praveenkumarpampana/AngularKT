@@ -1,0 +1,23 @@
+
+
+How angular 1.x implementing 2-way data-binding ?
+
+  using 'watchers'/listeners  ==> functions
+
+
+  how ?
+
+  on booting , for every scoped model-property and expressions,
+  angular will register 'watchers'
+
+  watchers will read/write model when it is dirty.
+
+  how watchers will execute ?
+
+  using 'digest-loop' on any native-event thru $apply()/$digest()
+
+  impt note:
+
+   we can also register our own watchers to execute custom-logic.
+
+  ----------------------------------------------------------

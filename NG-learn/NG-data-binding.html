@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-data-binding.html</div>
+
+        <div ng-app="demo" class="container">
+           <span ng-bind="name" class="badge"></span>
+           <div class="well" ng-controller="NameController">
+            Name : <input ng-model="name"/>
+                   <button  ng-click="loadName()">load ( ng-click )</button>
+                   <button  onclick="window.loadName()">load ( on-click )</button>
+                   <button ng-click="resetName()">reset</button>
+            <hr/>
+            Hello : <span ng-bind="name" class="badge"></span>
+        </div>
+        
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.controller('NameController',function($scope,$rootScope){
+             $scope.name='Nag';
+             $scope.loadName=function(){
+                   $scope.name='Nagabhushanam';
+             }
+             window.loadName=function(){
+                 console.log('loading name...');
+                 $rootScope.name="Abcd";
+                 $scope.name='Ria';
+                //  $scope.$digest(); // will run watcher only current-scope and child.
+                $scope.$apply(); // will run watchers from $rootScope..
+             }
+             $scope.resetName=function(){
+                   $scope.name='Nag';
+             }
+             $scope.$watch('name',function(newName,oldName){
+                 console.log('custon-wacther running - digest-loop');
+                 console.log(newName+" - "+oldName);
+             });
+
+         });
+
+        </script>
+        
+    </body>
+</html>

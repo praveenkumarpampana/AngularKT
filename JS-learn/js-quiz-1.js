@@ -11,6 +11,5 @@ function Person(name,age) {
     }
 }
 
-// Person('Abc',100); // never invoke constructor func without new-keyword
+Person('Abc',100); 
 
-new Person('Abc',100);

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-data-binding-ex.html</div>
+
+        <div ng-app="demo" class="container">
+           
+            <div class="well" ng-controller="UserController">
+                <select ng-options="n for n in [5,10,15,20]" ng-model="count"></select>
+                <input ng-model="count"/>
+                <table class="table table-bordered table-condensed table-stripped">
+                    <tr ng-repeat="user in users">
+                        <td>{{user.fname}}</td>
+                        <td>{{user.lname}}</td>
+                    </tr>    
+                </table>    
+            </div>    
+
+
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.controller('UserController',function($scope,$rootScope,$http){
+            
+             $scope.count=5;
+
+             $scope.$watch('count',function(n,o){
+                  loadUsers(n);
+             });
+
+            function loadUsers(count){
+                 $http.jsonp(`http://www.filltext.com/?callback=JSON_CALLBACK&rows=${count}&fname={firstName}&lname={lastName}`)
+                 .success(function (data) {
+                    $scope.users = data
+                 });
+            }
+
+         });
+
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-data-binding.html</div>
+
+        <div class="well">
+            Name : <input id="inputField"/>
+                   <button id="loadBtn">load</button>
+                   <button id="resetBtn">reset</button>
+            <hr/>
+            Hello : <span id="spanEle"></span>
+        </div>
+
+        <script>
+
+            var inputField=document.querySelector('#inputField');
+            var loadBtn=document.querySelector('#loadBtn');
+            var resetBtn=document.querySelector('#resetBtn');
+            var spanEle=document.querySelector('#spanEle');
+
+            var viewModel={
+                name:'Nag'
+            };
+
+            function applyBindings(){
+                inputField.value=viewModel.name;
+                spanEle.innerHTML=viewModel.name;
+            }
+
+            applyBindings();
+
+            loadBtn.addEventListener('click',function(e){
+                // load name from server
+                viewModel.name='Nagabhushanam';
+                applyBindings();
+            });
+            resetBtn.addEventListener('click',function(e){
+                viewModel.name='Nag';
+                applyBindings();
+            });
+
+            inputField.addEventListener('keyup',function(e){
+                // load name from server
+                viewModel.name=this.value;
+                applyBindings();
+            });
+        </script>
+
+
+
+
+    </body>
+</html>

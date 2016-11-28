@@ -26,14 +26,27 @@
                     
                    <div class="row">
                        <div class="col-xs-3 col-sm-3 col-md-3">
-                           <img ng-src="{{product.images[0].full}}" width="100"/>
+                           <img ng-src="{{product.images[0].full}}" width="100" class="img-responsive"/>
                        </div>    
                        <div class="col-xs-9 col-sm-9 col-md-9">
                             <span class="badge">{{$index+1}}</span>
                             <h4>{{product.name | uppercase}} <small>{{product.make|date:'yyyy'}}</small> </h4>
                             <h5>{{product.price | priceDiscount:product.discount| currency:'&#8377;':0 }}</h5>
-                            <p>{{product.description}}</p>
                             <button ng-show="product.canBuy" class="btn btn-sm btn-primary">buy</button>
+                            
+                            <hr/>
+
+                            <section ng-init="tab=1">
+                                <ul class="nav nav-tabs">
+                                    <li ng-class="{active:tab===1,'other-class':false}"><a href ng-click="tab=1">Description</a></li>
+                                    <li ng-class="{active:tab===2}"><a href ng-click="tab=2">Specification</a></li>
+                                    <li ng-class="{active:tab===3}"><a href ng-click="tab=3">Reviews</a></li>
+                                </ul>   
+                                <div class="panel" ng-show="tab===1">{{product.description}}</div> 
+                                <div class="panel" ng-show="tab===2">Not Yet</div>  
+                                <div class="panel" ng-show="tab===3">None Yet</div>    
+                            </section>    
+
                        </div>    
                    </div>         
 
