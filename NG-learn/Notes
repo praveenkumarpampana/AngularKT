@@ -21,3 +21,13 @@ How angular 1.x implementing 2-way data-binding ?
    we can also register our own watchers to execute custom-logic.
 
   ----------------------------------------------------------
+
+
+
+  NG , will validate form-fields in 2 ways
+
+    1. based HTML5 form validation attributes.
+    2. using 'directives'
+
+
+   ---------------------------------------------- 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-form-validation-ex1.html</div>
+
+        <div ng-app="demo" class="container">
+           
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-xs-6">
+
+                    <form novalidate name="userForm" ng-controller="UserController" ng-submit="userForm.$valid && doSave()">
+                        <div class="form-group" ng-class="{'has-error':userForm.email.$invalid && userForm.email.$dirty}">
+                            <label>Email</label>
+                            <input type="email" 
+                                   name="email" 
+                                   ng-model="user.email" 
+                                   required
+                                   autofocus
+                                   class="form-control"/>
+                            <div class="help-block" ng-show="userForm.email.$error.required && userForm.email.$dirty">Required</div> 
+                            <div class="help-block" ng-show="userForm.email.$error.email && userForm.email.$dirty">Invalid Email</div>       
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':userForm.pword.$invalid && userForm.pword.$dirty}">
+                            <label>Password</label>
+                            <input type="password" 
+                                   name="pword" 
+                                   ng-model="user.pword" 
+                                   required
+                                   minlength="3"
+                                   ng-maxlength="6"
+                                   class="form-control"/>
+                            <div class="help-block" ng-show="userForm.pword.$error.required && userForm.pword.$dirty">Required</div>
+                            <div class="help-block" ng-show="userForm.pword.$error.minlength && userForm.pword.$dirty">Too short</div>
+                            <div class="help-block" ng-show="userForm.pword.$error.maxlength && userForm.pword.$dirty">Too Long</div> 
+                        </div>    
+                        <button ng-disabled="userForm.$invalid" class="btn btn-primary">save</button>  
+                    
+                         <pre>{{userForm|json}}</pre>
+
+                    </form>    
+
+                   
+
+                </div>
+            </div>     
+
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.controller('UserController',function($scope){
+             $scope.doSave=function(){
+                 if($scope.userForm.$valid){
+                     //...
+                 }else{
+                     console.log('invalid form...');
+                 }
+             }
+         });
+        </script>
+        
+    </body>
+</html>

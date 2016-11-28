@@ -3,7 +3,7 @@
 (function () { 
 
 
-    var mod = angular.module('shop', []);  
+    var mod = angular.module('shop', ['jcs-autoValidate']);  
     
 
     // M --> Model  ( data )
@@ -36,7 +36,6 @@
 
     mod.controller('ShopController', function ($scope) { 
         // provide behav & data to view
-        
         // this.product = item;
         $scope.products = items;   // View-Model
 
@@ -53,16 +52,16 @@
     });
 
      mod.controller('ReviewFormController', function ($scope) { 
-         $scope.review = {author: '', comment: '' };
+         $scope.review = {author: 'nag@gmail.com', comment: '' };
          $scope.addNewReview = function(product) {
              // send to server...
              product.reviews.push($scope.review);
-             $scope.review = {author: '', comment: '' };
+             $scope.review = { author: 'nag@gmail.com', comment: '' };
+             $scope.reviewForm.$setPristine(true);
          }
     });
 
     // Filters
-
     mod.filter('priceDiscount', function () { 
         return function (price, discount) {
             if (angular.isNumber(price)) {

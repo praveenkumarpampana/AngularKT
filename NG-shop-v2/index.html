@@ -53,10 +53,10 @@
 
                                   <hr/>
 
-                                 
-
-                                  <form ng-controller="ReviewFormController"
-                                        ng-submit="addNewReview(product)">
+                                  <form name="reviewForm"
+                                        ng-controller="ReviewFormController"
+                                        novalidate
+                                        ng-submit="reviewForm.$valid && addNewReview(product)">
 
                                     <blockquote>
                                         <h4> {{review.stars}} <small>{{review.author}}</small></h4>
@@ -65,15 +65,15 @@
 
                                       <div class="form-group">
                                           <label>stars</label>
-                                          <select class="form-control" ng-options="n for n in [1,2,3,4,5]" ng-model="review.stars"></select>
+                                          <select required class="form-control" ng-options="n for n in [1,2,3,4,5]" ng-model="review.stars"></select>
                                       <div>
                                       <div class="form-group">
                                           <label>author</label>
-                                          <input type="email" class="form-control" ng-model="review.author"/>
+                                          <input required type="email" class="form-control" ng-model="review.author"/>
                                       <div>  
                                       <div class="form-group">
                                           <label>comment</label>
-                                          <textarea class="form-control" ng-model="review.comment"></textarea>
+                                          <textarea required minlength="20" class="form-control" ng-model="review.comment"></textarea>
                                       <div>  
                                       <button class="btn btn-primary">submit</button>    
                                   </form>            
@@ -88,6 +88,7 @@
         </div>    
 
         <script src="angular-1.5.8/angular.js"></script>
+        <script src="jcs-autovalidate/jcs-auto-validate.js"></script>
         <script src="js/app.js"></script>
         
     </body>

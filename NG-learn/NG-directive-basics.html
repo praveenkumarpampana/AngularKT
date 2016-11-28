@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-directive-basics.html</div>
+
+        <div ng-app="demo" class="container">
+
+            <!--1. Attribute style-->
+            <div my-hello-world></div>
+            <div data-my-hello-world></div>
+            <div my:hello:world></div>
+            
+            <hr/>
+
+            <!--2. Element style-->
+            <my-hello-world></my-hello-world>
+            <my:hello:world></my:hello:world>
+
+            <hr/>
+
+            <!--3. class style-->
+            <div class="my-hello-world"></div>
+
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+
+        <script type="text/ng-template" id="/templates/my-world.html">
+            <div>
+                <h4> My World </h4>
+            </div>
+        </script>
+
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.directive('myHelloWorld',function(){
+             return{
+                 restrict:'AEC',
+                 replace:true,
+                 //template:'<h4>Hello World</h4>'
+                 templateUrl:'templates/hello-world.html'
+             };
+         });
+
+        </script>
+        
+    </body>
+</html>

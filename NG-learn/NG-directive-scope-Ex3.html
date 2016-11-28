@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+        
+        <style>
+            .ng-scope,.ng-isolate-scope{
+                border: 1px solid red;
+                padding: 15px;
+                margin: 5px;
+            }
+        </style>
+    
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-directive-scope-Ex3.html</div>
+
+        <div ng-app="demo" class="container">
+
+            <div class="well" ng-controller="ColorController">
+                <input ng-model="color"/>
+                <hr/>
+                <div my-hello-world ></div>
+                <!--<div my-hello-world color="{{color}}"></div>-->
+                <div my-hello-world my-color="color"></div>
+            </div>    
+
+        </div>
+
+        <script src="jquery-3.1.1.js"></script>
+        <script src="angular-1.5.8/angular.js"></script>
+
+
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.controller('ColorController',function($scope){
+             $scope.color="yellow";
+         });
+
+         mod.directive('myHelloWorld',function(){
+             return{
+                 restrict:'AE',
+                 scope:{
+                     //color:'@color'
+                     color:'=myColor'
+                 },
+                 //replace:true,
+                 templateUrl:'templates/hello-world.html',
+                 link:function(scope,jqElement,attrs){
+                     //console.log('myHelloWorld.link()');
+                     //console.dir(scope);
+                     //scope.color='grey';
+
+                     //console.log(jqElement);
+
+                     jqElement.on('mouseover',function(e){
+                         jqElement.css('cursor','pointer');
+                     });
+
+                     jqElement.on('click',function(e){
+                         //jqElement.children('div').css('background-color','#def');
+                         console.log('changing color...');
+                         scope.color="#def";
+                         scope.$apply();
+                     });
+
+                     if(attrs.color){
+                         scope.color=attrs.color;
+                     }
+                 }
+             };
+         });
+
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-form-validation-ex1.html</div>
+
+        <div ng-app="demo" class="container">
+           
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-xs-6">
+
+                    <form novalidate name="userForm" 
+                          ng-controller="UserController" 
+                          ng-submit="userForm.$valid && doSave()">
+                        
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" 
+                                   name="email" 
+                                   ng-model="user.email" 
+                                   required
+                                   autofocus
+                                   class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" 
+                                   name="pword" 
+                                   ng-model="user.pword" 
+                                   required
+                                   minlength="3"
+                                   ng-maxlength="6"
+                                   class="form-control"/>
+                        </div>    
+                        <button class="btn btn-primary">save</button>  
+                        <button type="reset">Reset</button>
+                    </form>    
+
+                   
+
+                </div>
+            </div>     
+
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script src="jcs-auto-validate.js"></script>
+
+        <script>
+         var mod=angular.module('demo',['jcs-autoValidate']);
+
+        mod.run([
+        'bootstrap3ElementModifier',
+        function (bootstrap3ElementModifier) {
+              bootstrap3ElementModifier.enableValidationStateIcons(true);
+        }]);
+
+         mod.controller('UserController',function($scope){
+             $scope.doSave=function(){
+                 if($scope.userForm.$valid){
+                     //...
+                 }else{
+                     console.log('invalid form...');
+                 }
+             }
+         });
+        </script>
+        
+    </body>
+</html>
