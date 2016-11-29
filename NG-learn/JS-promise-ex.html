@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> JS-promise-ex.html </div>
+
+        <div class="container">
+          
+        </div>
+
+
+        <script>
+
+        // hotel module
+        var hotel={
+            getCoffee:function(){
+                var promise=new Promise(function(resolve,reject){
+
+                    setTimeout(function(){
+                        // resolve('capi..');
+                        reject('No Milk');
+                    },5000);
+
+                });
+                return promise;
+            }
+        };
+
+
+        // trainer-module
+        var trainer={
+            doTeach:function(){
+                console.log('teaching.....');
+                console.log('need coffee....requesting on hotel');
+                var promise=hotel.getCoffee();
+                console.log('got promise, deferiing actions');
+                promise.then(function(result){
+                    console.log('yummy....'+result);
+                },function(error){
+                    console.log('oops...'+error);
+                });
+                console.log('teaching further...and finished...');
+            }
+        };
+
+        trainer.doTeach();
+
+        </script>
+        
+    </body>
+</html>

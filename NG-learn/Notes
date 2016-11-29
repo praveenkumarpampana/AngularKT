@@ -31,3 +31,8 @@ How angular 1.x implementing 2-way data-binding ?
 
 
    ---------------------------------------------- 
+
+
+   how to create service components ?
+
+   serviceProvider with factory-method shud create service-objs'

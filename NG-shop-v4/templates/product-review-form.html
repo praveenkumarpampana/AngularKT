@@ -1,0 +1,23 @@
+<form name="reviewForm"
+      novalidate
+      ng-submit="reviewForm.$valid && addNewReview(product)">
+
+    <blockquote>
+        <h4> {{review.stars}} <small>{{review.author}}</small></h4>
+        <p>{{review.comment}}</p>
+    </blockquote> 
+
+    <div class="form-group">
+        <label>stars</label>
+        <select required class="form-control" ng-options="n for n in [1,2,3,4,5]" ng-model="review.stars"></select>
+    <div>
+    <div class="form-group">
+        <label>author</label>
+        <input required type="email" class="form-control" ng-model="review.author"/>
+    <div>  
+    <div class="form-group">
+        <label>comment</label>
+        <textarea required minlength="20" class="form-control" ng-model="review.comment"></textarea>
+    <div>  
+    <button class="btn btn-primary">submit</button>    
+</form>    

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ng-shop</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body class="container">
+
+    <div class="page-header"> NG-without-services.html </div>
+
+    <div ng-app="demo" class="container">
+
+        <div class="well" ng-controller="HitController">
+            <button class="btn btn-primary" ng-click="doHit()">Hit-1</button>
+            <span class="badge">{{count}}</span>
+        </div>
+        <div class="well" ng-controller="HitController">
+            <button class="btn btn-primary" ng-click="doHit()">Hit-2</button>
+            <span class="badge">{{count}}</span>
+        </div>
+        <div class="well" ng-controller="KickController">
+            <button class="btn btn-primary" ng-click="doKick()">Kick-1</button>
+            <span class="badge">{{count}}</span>
+        </div>
+
+    </div>
+
+
+    <script src="angular-1.5.8/angular.js"></script>
+    <script>
+         var mod=angular.module('demo',[]);
+
+        mod.config(function(countServiceProvider){
+              console.log('demo: config()');
+              countServiceProvider.setCount(200);
+         });
+
+         mod.run(function(){
+             // initialization...
+             console.log('demo: run()');
+         });
+
+       
+
+         mod.controller('HitController',function($scope,countService){
+             console.log('New HC instance created..');
+             $scope.count=countService.getCount();
+             $scope.doHit=function(){
+                 countService.doCount();
+                 $scope.count=countService.getCount();
+             }
+         });
+         mod.controller('KickController',function($scope,countService){
+             console.log('New KC instance created..');
+             $scope.count=countService.getCount();
+             $scope.doKick=function(){
+                countService.doCount();
+                 $scope.count=countService.getCount();
+             }
+         });
+
+
+         mod.provider('countService',function(){
+             console.log('countServiceProvider instance created...');
+             this.count=0;
+
+             this.setCount=function(count){
+                 this.count=count;
+             }
+
+             var self=this;
+             this.$get=function(){
+                 console.log('countServiceProvider factory-method called...');
+                 var service= {
+                     doCount:function(){
+                          self.count++;
+                     },
+                     getCount:function(){
+                         return self.count;
+                     }
+                 };
+                 return service;
+             }
+         });
+
+
+        </script>
+
+</body>
+
+</html>

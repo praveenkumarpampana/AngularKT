@@ -1,0 +1,14 @@
+
+
+ how to do routing for SPA ?
+
+ 2-ways
+
+ --> using 'ngRoute' 
+
+     limitations:
+
+     --> nested views not possible
+     --> multiple views not possible
+
+ --> using 'ui.router'   ( third-party )
