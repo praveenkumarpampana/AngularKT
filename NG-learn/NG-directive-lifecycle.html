@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ng-shop</title>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+    </head>
+    <body class="container">
+
+        <div class="page-header"> NG-directive-lifecycle.html</div>
+
+        <div ng-app="demo" class="container">
+           
+           <div my-dir1 text="hello">
+               <hr/><span class="badge">by-Nag</span>
+           </div>
+           
+        
+        </div>
+
+
+        <script src="angular-1.5.8/angular.js"></script>
+        <script>
+         var mod=angular.module('demo',[]);
+
+         mod.directive('myDir1',function(){
+             return {
+                 restrict:'AE',
+                 transclude:true,
+                 template:'<div class=well>my-dir1 <div ng-transclude></div> <br/> <div ng-repeat="n in [1,2]"><div my-dir2></div></div> </div>',
+                 compile:function(jqElement,attrs){
+                     console.log('myDir1.compile()');
+                     // Add/Remove elements/directives into DOM ( DOM manipulation)
+                     jqElement.css('border','1px solid green');
+                     //jqElement.append('<span class="badge"> - ng-learn </span>');
+
+                     return {
+                         pre:function(scope,jqElemnt,attrs){
+                             console.log('myDir1.preLink()');
+                            //  scope.text=attrs.text;
+                         },
+                         post:function(scope,jqElement,attrs){
+                             console.log('myDir1.postLink()');
+                         }
+                     };
+                 },
+                 controller:function($scope){
+                        console.log('myDir1.controller()');
+                 }
+             };
+         });
+
+         mod.directive('myDir2',function(){
+             return {
+                 restrict:'AE',
+                 template:'<div class=well>my-dir2  : {{message}}</div>',
+                 compile:function(jqElement,attrs){
+                     console.log('myDir2.compile()');
+                     jqElement.css('border','1px solid lime');
+
+                     return {
+                         pre:function(scope,jqEleemnt,attrs){
+                             console.log('myDir2.preLink()');
+                         },
+                         post:function(scope,jqElement,attrs){
+                             console.log('myDir2.postLink()');
+                             scope.message=scope.text;
+                         }
+                     };
+                 },
+                 controller:function($scope){
+                        console.log('myDir2.controller()');
+                 }
+             };
+         });
+
+          mod.directive('myDir3',function(){
+             return {
+                 restrict:'AE',
+                 template:'<div class=well>my-dir3</div>',
+                 link:function(scope,jqElement,attrs){
+                    console.log('myDir3.postLink()');
+                    scope.message=scope.text;
+                 },
+                 controller:function($scope){
+                    console.log('myDir2.controller()');
+                 }
+             };
+         });
+
+
+        </script>
+        
+    </body>
+</html>
