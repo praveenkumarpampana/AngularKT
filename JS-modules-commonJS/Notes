@@ -1,0 +1,15 @@
+
+
+
+why do we need commonJS modules ?
+
+
+--> simple approach
+--> by default every .js file is a module.
+--> every var/function by default private to that module.
+--> use 'module.exports' , to abstract any to other module.
+--> use 'require()' , to import any module.
+
+
+--> default standard to node.js env.
+
