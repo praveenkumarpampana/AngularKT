@@ -1,0 +1,9 @@
+
+
+NG - routing for SPA
+---------------------
+
+  2-ways
+
+  1. using 'ngRoute' module   ( basic )
+  2. using 'ui.router' module ( advanced )  ==> third-party  ( angular-ui team )
