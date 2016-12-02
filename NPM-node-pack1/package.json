@@ -1,0 +1,17 @@
+{
+  "name": "node-pack1",
+  "version": "1.0.1",
+  "description": "simple pack",
+  "main": "index.js",
+  "scripts": {
+    "mytest": "node_modules/mocha/bin/mocha"
+  },
+  "author": "nag",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "4.17.2"
+  },
+  "devDependencies": {
+    "mocha": "3.2.0"
+  }
+}

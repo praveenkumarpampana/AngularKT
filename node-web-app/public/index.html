@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>app</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="pm">
+
+	<div class="page-header">App + ( Node + Express )</div>
+
+	<div ng-controller="ProductsController">
+	
+		<button ng-click="loadProducts()" class="btn btn-primary">Load Products</button>
+	
+		<table class="table table-bordered table-condensed">
+			<tr ng-repeat="product in products">
+				<td>{{product.name}}</td>
+				<td>{{product.price}}</td>
+				<td>{{product.desc}}</td>
+			</tr>
+		</table>
+	
+	
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="pm.js"></script>
+</body>
+</html>

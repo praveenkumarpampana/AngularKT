@@ -1,0 +1,46 @@
+
+
+
+   NPM
+   ----
+   
+   command line tool to get/publish node packages
+   
+   
+   to create package descriptor
+   
+   > npm init
+   
+   to get node packages locally as appln dependencies 
+   
+   > npm i package-name --save
+   
+   to get node packages locally as dev dependencies 
+   
+   e.g , build tools , test-case runners , etc...
+   
+   > npm i package-name --save-dev
+   
+    to get node packages globally as tools,compilers.etc..
+   
+   e.g , build tools , test-case runners , etc...
+   
+   > npm i package-name -g/--global
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
