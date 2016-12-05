@@ -1,0 +1,17 @@
+<p>
+
+    <div class="panel panel-default" ng-if="products">
+        <div class="panel-heading">All Products</div>
+        <div class="panel-body">
+
+            <table class="table table-bordered">
+                <tr ng-repeat="product in products">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</p>
